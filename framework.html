@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Change Management Framework</title>
+    <style>
+        :root {
+            /* Warm, sophisticated 2025 color palette */
+            --sage-primary: #9CAF88;
+            --sage-light: #B8C4A5;
+            --sage-muted: #A8B599;
+            --warm-beige: #E8DCC0;
+            --cream: #F4F0E8;
+            --soft-brown: #D4C4A8;
+            --charcoal: #4A4A47;
+            --warm-gray: #A09A8E;
+            --accent-coral: #D4A574;
+            --background: #FEFCF7;
+            --text-primary: #3A3A37;
+            --text-secondary: #6B6861;
+            --border-light: #E8E3D5;
+            --card-shadow: rgba(155, 175, 136, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            line-height: 1.65;
+            color: var(--text-primary);
+            background-color: var(--background);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem;
+        }
+
+        /* Navigation */
+        .nav {
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sage-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            border-color: var(--sage-primary);
+            background: var(--cream);
+            transform: translateY(-1px);
+        }
+
+        /* Header Styles - Softer, more sophisticated */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--sage-primary) 0%, var(--sage-light) 100%);
+            color: white;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+        }
+
+        .header h1 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.92;
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .description {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Styles - More breathing room */
+        .section {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 20px var(--card-shadow);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .section-header {
+            background: var(--cream);
+            padding: 2.5rem 3rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .section-content {
+            padding: 3rem;
+        }
+
+        .section-content > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* SWOT Matrix - Softer, more organic */
+        .swot-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .swot-quadrant {
+            background: var(--cream);
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            min-height: 220px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .swot-quadrant:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--card-shadow);
+        }
+
+        .swot-quadrant h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .swot-quadrant p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .swot-quadrant strong {
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+
+        .swot-quadrant.benefits {
+            border-color: var(--sage-muted);
+            background: linear-gradient(135deg, var(--cream) 0%, #f0f4ec 100%);
+        }
+
+        .swot-quadrant.benefits::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--sage-primary);
+            border-radius: 0 0 0 16px;
+        }
+
+        .swot-quadrant.costs {
+            border-color: var(--accent-coral);
+            background: linear-gradient(135deg, var(--cream) 0%, #f4f0ec 100%);
+        }
+
+        .swot-quadrant.costs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-coral);
+            border-radius: 0 0 0 16px;
+        }
+
+        /* Table Styles - More refined */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--card-shadow);
+            border: 1px solid var(--border-light);
+        }
+
+        .data-table th {
+            background: var(--sage-primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .data-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .data-table td strong {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--cream);
+        }
+
+        /* Venn Diagram Stages - More elegant cards with image placeholders */
+        .venn-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stage-card {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .stage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage-primary), var(--sage-light));
+        }
+
+        .stage-card:hover {
+            border-color: var(--sage-muted);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px var(--card-shadow);
+        }
+
+        .stage-number {
+            background: linear-gradient(135deg, var(--sage-primary), var(--sage-light));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(155, 175, 136, 0.3);
+        }
+
+        .stage-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+            font-size: 1.1rem;
+        }
+
+        .stage-venn-placeholder {
+            width: 100%;
+            height: 180px;
+            background: var(--cream);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+
+        .stage-venn-placeholder:hover {
+            border-color: var(--sage-primary);
+            background: #f0f4ec;
+        }
+
+        .venn-svg {
+            width: 140px;
+            height: 100px;
+        }
+
+        .human-circle {
+            fill: var(--sage-light);
+            stroke: var(--sage-primary);
+            stroke-width: 2;
+            opacity: 0.8;
+        }
+
+        .ai-circle {
+            fill: var(--accent-coral);
+            stroke: var(--soft-brown);
+            stroke-width: 2;
+            opacity: 0.8;
+        }
+
+        .venn-label {
+            font-size: 10px;
+            fill: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .stage-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        /* Remove the old venn-image-placeholder styles */
+
+        /* Data Spectrum - More sophisticated design with enclosed stages */
+        .spectrum-container {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-beige) 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spectrum-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+        }
+
+        .spectrum-stages {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .spectrum-stage {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .spectrum-stage:hover {
+            border-color: var(--sage-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--card-shadow);
+        }
+
+        .spectrum-stage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sage-primary), var(--accent-coral));
+            border-radius: 12px 12px 0 0;
+        }
+
+        .spectrum-level {
+            background: white;
+            border: 3px solid var(--sage-primary);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--sage-primary);
+            margin: 0 auto 1rem;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(155, 175, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .spectrum-stage:hover .spectrum-level {
+            transform: scale(1.05);
+            border-color: var(--sage-muted);
+            box-shadow: 0 6px 20px rgba(155, 175, 136, 0.3);
+        }
+
+        .spectrum-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .spectrum-label strong {
+            display: block;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Footer - More refined */
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-light);
+            background: var(--cream);
+            border-radius: 16px;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2.25rem;
+            }
+
+            .section-header {
+                padding: 2rem;
+            }
+
+            .section-content {
+                padding: 2rem;
+            }
+
+            .swot-container {
+                grid-template-columns: 1fr;
+            }
+
+            .spectrum-stages {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .container {
+                max-width: none;
+                padding: 0;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--border-light);
+            }
+
+            .header {
+                background: var(--sage-primary) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-link">
+                ← Back to Framework Collection
+            </a>
+        </nav>
+
+        <header class="header">
+            <h1>AI Change Management Framework</h1>
+            <div class="subtitle">Initial Engagement Tool for Organizations Executing AI Solutions</div>
+            <div class="description">
+                This framework blends customized SWOT analysis, Venn diagram-based self-assessment for AI transformation stages, and a data spectrum for training specificity. It enables companies to "do the math" on AI adoption, self-assess progress, and plan data strategies. <strong>Human judgment guides all strategic decisions</strong> - from setting target stages to evaluating acceptable trade-offs.
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">1. AI SWOT Analysis: Benefits and Costs</h2>
+                <div class="section-subtitle">Quantifiable impacts of AI execution across four strategic quadrants</div>
+            </div>
+            <div class="section-content">
+                <p>The core of this framework focuses on quantifiable impacts of AI execution. Populate with organization-specific data to calculate ROI and inform decisions.</p>
+                
+                <div class="swot-container">
+                    <div class="swot-quadrant benefits">
+                        <h4>Direct Benefits</h4>
+                        <p>Immediate, tangible gains like cost savings or reduced wait times.</p>
+                        <br>
+                        <strong>Formula:</strong><br>
+                        Savings = (Old Cost - New Cost) × Volume
+                    </div>
+                    <div class="swot-quadrant costs">
+                        <h4>Acceptable Costs</h4>
+                        <p>Above-the-line trade-offs, e.g., minor quality dips offset by savings.</p>
+                        <br>
+                        <strong>Assessment:</strong><br>
+                        If Benefit > Cost, proceed using thresholds
+                    </div>
+                    <div class="swot-quadrant benefits">
+                        <h4>Indirect Benefits</h4>
+                        <p>Secondary reallocations, e.g., shifting salaries to hire senior talent after AI automates junior tasks.</p>
+                        <br>
+                        <strong>Measure:</strong><br>
+                        Net Value = Reallocated Resources - Transition Costs
+                    </div>
+                    <div class="swot-quadrant costs">
+                        <h4>Unacceptable Costs</h4>
+                        <p>Below-the-line threats, e.g., long-term business erosion from over-reliance or ethical issues.</p>
+                        <br>
+                        <strong>Evaluate:</strong><br>
+                        Probability × Impact; mitigate or avoid
+                    </div>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Quadrant</th>
+                            <th>Description</th>
+                            <th>Examples</th>
+                            <th>Quantification Tips</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Direct Benefits</strong></td>
+                            <td>Immediate financial/operational gains</td>
+                            <td>Reduced wages via automation; shorter process times</td>
+                            <td>Calculate: Savings = (Old Cost - New Cost) × Volume</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Indirect Benefits</strong></td>
+                            <td>Reallocations from direct savings</td>
+                            <td>Cut junior staff to hire seniors in design dept</td>
+                            <td>Measure: Net Value = Reallocated Resources - Transition Costs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Acceptable Costs</strong></td>
+                            <td>Tolerable trade-offs balanced by benefits</td>
+                            <td>Quality reduction in ad copy offset by dev cost savings</td>
+                            <td>Assess: If Benefit > Cost, proceed; use thresholds</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unacceptable Costs</strong></td>
+                            <td>Long-term threats mirroring SWOT threats</td>
+                            <td>AI bias eroding customer trust; dependency risks</td>
+                            <td>Evaluate: Probability × Impact; mitigate or avoid</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">2. Venn Diagram Self-Assessment: AI Transformation Stages</h2>
+                <div class="section-subtitle">Visual progression to help organizations assess current AI integration and set targets</div>
+            </div>
+            <div class="section-content">
+                <p>This visual progression helps organizations self-assess their current AI integration and set target destinations. Conduct yearly reevaluations to measure progress and adjust targets based on evolving needs.</p>
+                
+                <div class="venn-stages">
+                    <div class="stage-card">
+                        <div class="stage-number">1</div>
+                        <div class="stage-title">Pre-AI</div>
+                        <div class="stage-venn-placeholder">
+                            <svg class="venn-svg" viewBox="0 0 140 100">
+                                <!-- Single Human circle only -->
+                                <circle cx="70" cy="50" r="35" class="human-circle"/>
+                            </svg>
+                        </div>
+                        <div class="stage-description">Purely human organization; no AI execution</div>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">2</div>
+                        <div class="stage-title">Initial Testing</div>
+                        <div class="stage-venn-placeholder">
+                            <svg class="venn-svg" viewBox="0 0 140 100">
+                                <!-- Slight overlap -->
+                                <circle cx="50" cy="50" r="30" class="human-circle"/>
+                                <circle cx="90" cy="50" r="30" class="ai-circle"/>
+                            </svg>
+                        </div>
+                        <div class="stage-description">Slight AI overlap; pilots in limited areas</div>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">3</div>
+                        <div class="stage-title">Partial Execution</div>
+                        <div class="stage-venn-placeholder">
+                            <svg class="venn-svg" viewBox="0 0 140 100">
+                                <!-- Moderate overlap -->
+                                <circle cx="55" cy="50" r="32" class="human-circle"/>
+                                <circle cx="85" cy="50" r="32" class="ai-circle"/>
+                            </svg>
+                        </div>
+                        <div class="stage-description">Pronounced overlap; daily AI in some departments</div>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">4</div>
+                        <div class="stage-title">Majority AI</div>
+                        <div class="stage-venn-placeholder">
+                            <svg class="venn-svg" viewBox="0 0 140 100">
+                                <!-- Heavy overlap -->
+                                <circle cx="60" cy="50" r="32" class="human-circle"/>
+                                <circle cx="80" cy="50" r="32" class="ai-circle"/>
+                            </svg>
+                        </div>
+                        <div class="stage-description">Heavy overlap; AI in most functions, with human-only spaces</div>
+                    </div>
+                    <div class="stage-card">
+                        <div class="stage-number">5</div>
+                        <div class="stage-title">Full AI Enablement</div>
+                        <div class="stage-venn-placeholder">
+                            <svg class="venn-svg" viewBox="0 0 140 100">
+                                <!-- Complete transformation - single AI circle -->
+                                <circle cx="70" cy="50" r="35" class="ai-circle"/>
+                            </svg>
+                        </div>
+                        <div class="stage-description">AI permeates all aspects; organization fully transformed</div>
+                    </div>
+                </div>
+
+                <p><strong>Usage:</strong> Mark current stage, set target (e.g., aim for Stage 3 if risk-averse), and link to SWOT (e.g., advancing stages may amplify indirect benefits but introduce unacceptable costs). Reevaluate annually via surveys or metrics.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">3. AI Data Spectrum: Training Specificity</h2>
+                <div class="section-subtitle">Explicit approach to AI training data and customization</div>
+            </div>
+            <div class="section-content">
+                <p>To avoid common pitfalls, explicitly declare your approach to AI training data and customization. This spectrum progresses from basic to advanced, overlaying onto Venn stages.</p>
+                
+                <div class="spectrum-container">
+                    <div class="spectrum-stages">
+                        <div class="spectrum-stage">
+                            <div class="spectrum-level">1</div>
+                            <div class="spectrum-label">
+                                <strong>Out-of-Box AI</strong>
+                                Use pre-trained models with basic prompts; low specificity
+                            </div>
+                        </div>
+                        <div class="spectrum-stage">
+                            <div class="spectrum-level">2</div>
+                            <div class="spectrum-label">
+                                <strong>With Enhancements</strong>
+                                Add SOPs and AI experts for refined usage
+                            </div>
+                        </div>
+                        <div class="spectrum-stage">
+                            <div class="spectrum-level">3</div>
+                            <div class="spectrum-label">
+                                <strong>Targeted Tools</strong>
+                                Apply specialized tools for specific use cases
+                            </div>
+                        </div>
+                        <div class="spectrum-stage">
+                            <div class="spectrum-level">4</div>
+                            <div class="spectrum-label">
+                                <strong>Platform Implementation</strong>
+                                Fine-tune on services with proprietary data
+                            </div>
+                        </div>
+                        <div class="spectrum-stage">
+                            <div class="spectrum-level">5</div>
+                            <div class="spectrum-label">
+                                <strong>Custom-Built</strong>
+                                Develop from scratch for high specificity and control
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>Integration:</strong> During Venn reevaluations, update spectrum position and quantify impacts in SWOT (e.g., higher specificity reduces unacceptable costs like bias).</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p><strong>AI Change Management Framework (Skeleton)</strong><br>
+            Created by Jeff Wickert | <a href="mailto:wickert@gmail.com" style="color: var(--sage-primary); text-decoration: none;">wickert@gmail.com</a><br>
+            Framework Version 1.0 | Developed for AI Transformation</p>
+        </footer>
+    </div>
+</body>
+</html>
