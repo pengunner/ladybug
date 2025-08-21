@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ladybug Ventures Sales Presentation Guide</title>
+    <style>
+        :root {
+            /* True Ladybug colors - red with black spots */
+            --ladybug-red: #DC143C;
+            --ladybug-red-light: #F56565;
+            --ladybug-red-muted: #E53E3E;
+            --ladybug-black: #1A1A1A;
+            --ladybug-cream: #FFF5F5;
+            --ladybug-orange: #FF6B35;
+            --ladybug-yellow: #FFD700;
+            --warm-gray: #4A4A4A;
+            --text-primary: #1A1A1A;
+            --text-secondary: #525252;
+            --border-light: #E5E5E5;
+            --background: #FFFCFC;
+            --card-shadow: rgba(220, 20, 60, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            line-height: 1.65;
+            color: var(--text-primary);
+            background-color: var(--background);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem;
+        }
+
+        /* Navigation */
+        .nav {
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--ladybug-red);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            border-color: var(--ladybug-red);
+            background: var(--ladybug-cream);
+            transform: translateY(-1px);
+        }
+
+        /* Header - True ladybug styling */
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--ladybug-red) 0%, var(--ladybug-red-light) 100%);
+            color: white;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+        }
+
+        /* Add ladybug spots to header */
+        .header::after {
+            content: '● ● ● ● ●';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 1.5rem;
+            color: var(--ladybug-black);
+            opacity: 0.3;
+            letter-spacing: 10px;
+        }
+
+        .header h1 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.92;
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 20px var(--card-shadow);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .section-header {
+            background: var(--ladybug-cream);
+            padding: 2.5rem 3rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--ladybug-black);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .section-content {
+            padding: 3rem;
+        }
+
+        .section-content > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Plain language explanations */
+        .plain-language {
+            background: linear-gradient(135deg, var(--ladybug-cream) 0%, #FFEAEA 100%);
+            border-left: 4px solid var(--ladybug-red);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--ladybug-red-muted);
+            font-weight: 500;
+        }
+
+        /* Qualification Framework */
+        .qualification-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .qualification-card {
+            background: var(--ladybug-cream);
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qualification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ladybug-red), var(--ladybug-red-light));
+        }
+
+        .qualification-card:hover {
+            border-color: var(--ladybug-red-muted);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--card-shadow);
+        }
+
+        .qualification-card h4 {
+            color: var(--ladybug-black);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .qualification-card ul {
+            text-align: left;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .qualification-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Carrot Pulling Example */
+        .carrot-example {
+            background: linear-gradient(135deg, var(--ladybug-cream) 0%, #FFF0F0 100%);
+            border-left: 4px solid var(--ladybug-red);
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 0 16px 16px 0;
+            position: relative;
+        }
+
+        .carrot-level {
+            margin-bottom: 2rem;
+        }
+
+        .carrot-level h4 {
+            color: var(--ladybug-red);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .question {
+            font-style: italic;
+            color: var(--ladybug-red-muted);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .response {
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .insight {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-weight: 500;
+            color: var(--ladybug-red);
+            border: 1px solid var(--border-light);
+        }
+
+        /* Objection Handling Comparison */
+        .objection-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .objection-card {
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .objection-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--card-shadow);
+        }
+
+        .surface-response {
+            background: linear-gradient(135deg, #F5F5F5 0%, #EEEEEE 100%);
+            border-left: 4px solid var(--warm-gray);
+        }
+
+        .deep-response {
+            background: linear-gradient(135deg, var(--ladybug-cream) 0%, #FFF0F0 100%);
+            border-left: 4px solid var(--ladybug-red);
+        }
+
+        .objection-card h4 {
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .surface-response h4 {
+            color: var(--warm-gray);
+        }
+
+        .deep-response h4 {
+            color: var(--ladybug-red);
+        }
+
+        .objection-card p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .objection-card strong {
+            color: var(--ladybug-black);
+        }
+
+        /* Key Phrases */
+        .key-phrases {
+            background: var(--ladybug-cream);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .key-phrases h4 {
+            color: var(--ladybug-black);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .phrase-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .phrase-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--ladybug-red);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(220, 20, 60, 0.05);
+        }
+
+        .phrase-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.12);
+        }
+
+        .phrase-item strong {
+            color: var(--ladybug-black);
+            font-weight: 600;
+        }
+
+        /* Learning Template */
+        .template-box {
+            background: var(--ladybug-cream);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .template-box h4 {
+            margin-bottom: 1.5rem;
+            color: var(--ladybug-black);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .template-box ul {
+            line-height: 1.8;
+        }
+
+        .template-box li {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .template-box strong {
+            color: var(--ladybug-red);
+            font-weight: 600;
+        }
+
+        .template-box em {
+            color: var(--warm-gray);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .worksheet-instructions {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border: 1px solid var(--border-light);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-light);
+            background: var(--ladybug-cream);
+            border-radius: 16px;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2.25rem;
+            }
+
+            .section-header {
+                padding: 2rem;
+            }
+
+            .section-content {
+                padding: 2rem;
+            }
+
+            .qualification-flow,
+            .objection-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .phrase-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="nav-link">
+                ← Back to Framework Collection
+            </a>
+        </nav>
+
+        <header class="header">
+            <h1>Sales Presentation Guide</h1>
+            <div class="subtitle">Connecting Customer Needs to Ladybug's Human-Centered Solutions</div>
+        </header>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Qualification Foundation</h2>
+                <div class="section-subtitle">Ensure prospects meet core criteria before presenting</div>
+            </div>
+            <div class="section-content">
+                <div class="plain-language">
+                    <strong>Plain Language:</strong> If a customer is qualified in these areas... we are likely to make a sale.
+                </div>
+                
+                <p>Strong qualification is the foundation of effective objection handling. Before presenting, confirm the prospect meets our five core criteria:</p>
+                
+                <div class="qualification-flow">
+                    <div class="qualification-card">
+                        <h4>Budget Allocated</h4>
+                        <ul>
+                            <li>$1MM-$10MM available</li>
+                            <li>Pre-seed to Series A</li>
+                            <li>Mid-market companies</li>
+                            <li>Heavily invested startups</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-card">
+                        <h4>Target Sectors</h4>
+                        <ul>
+                            <li>Healthcare systems</li>
+                            <li>Games & entertainment</li>
+                            <li>Defense contractors</li>
+                            <li>Related tech verticals</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-card">
+                        <h4>Tech Forward</h4>
+                        <ul>
+                            <li>5-year technology vision</li>
+                            <li>Internal training programs</li>
+                            <li>R&D investment</li>
+                            <li>Cross-industry solutions</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-card">
+                        <h4>Value Aligned</h4>
+                        <ul>
+                            <li>Treats customers well</li>
+                            <li>Respects employees</li>
+                            <li>Commitment to excellence</li>
+                            <li>Substance over flashiness</li>
+                        </ul>
+                    </div>
+                    <div class="qualification-card">
+                        <h4>Visionary Leadership</h4>
+                        <ul>
+                            <li>Sees competitive advantage</li>
+                            <li>Values human insight</li>
+                            <li>Strategic thinking</li>
+                            <li>Innovation mindset</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Presentation Opening</h2>
+                <div class="section-subtitle">Move past niceties into meaningful discovery</div>
+            </div>
+            <div class="section-content">
+                <div class="plain-language">
+                    <strong>Plain Language:</strong> This is roughly what we say to start the conversation.
+                </div>
+                
+                <div class="key-phrases">
+                    <h4>Opening Framework:</h4>
+                    <div class="phrase-list">
+                        <div class="phrase-item">
+                            <strong>"I heard about [the problem] and we think we can help, but I want to learn more."</strong>
+                        </div>
+                        <div class="phrase-item">
+                            <strong>"Walk me through [the complex problem]."</strong>
+                        </div>
+                        <div class="phrase-item">
+                            <strong>"What have you tried before that didn't work?"</strong>
+                        </div>
+                        <div class="phrase-item">
+                            <strong>"What would success look like for your team?"</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <p><strong>Critical:</strong> Listen for what really matters to the customer. Use their language and pain points to customize your presentation and handle objections effectively.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">The Carrot Pulling Method</h2>
+                <div class="section-subtitle">Dig deeper than surface needs to uncover core concerns</div>
+            </div>
+            <div class="section-content">
+                <div class="plain-language">
+                    <strong>Plain Language:</strong> This is what we want them to say. Not exactly this, but this level based on what we hear and how we respond. This process takes practice and improves over time.
+                </div>
+                
+                <p>Most salespeople harvest "carrot tops" - easy surface-level needs. To handle objections effectively, you must pull the whole carrot by drilling down to deeper concerns.</p>
+                
+                <div class="carrot-example">
+                    <div class="carrot-level">
+                        <h4>🥕 Surface Level (Carrot Top)</h4>
+                        <div class="question">"We need better branding."</div>
+                        <div class="response">Customer talks about logos, colors, website design</div>
+                        <div class="insight">Surface need: Visual identity</div>
+                    </div>
+                    
+                    <div class="carrot-level">
+                        <h4>🥕 Deeper Level (Middle Carrot)</h4>
+                        <div class="question">"What's driving the need for better branding right now?"</div>
+                        <div class="response">"Our customers don't understand what makes us different from competitors"</div>
+                        <div class="insight">Deeper need: Market differentiation</div>
+                    </div>
+                    
+                    <div class="carrot-level">
+                        <h4>🥕 Root Level (Whole Carrot)</h4>
+                        <div class="question">"How is that affecting your team and your customers day-to-day?"</div>
+                        <div class="response">"Our sales team struggles to explain our value, and customers choose cheaper alternatives because they don't see why we're worth more"</div>
+                        <div class="insight">Core concern: Revenue impact from poor value communication</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Objection Handling: Surface vs. Deep</h2>
+                <div class="section-subtitle">How qualification depth transforms objection responses</div>
+            </div>
+            <div class="section-content">
+                <div class="plain-language">
+                    <strong>Plain Language:</strong> If you qualify well, you have ammo to handle objections. That doesn't always happen, but this is why you qualify. Which of these options is more likely to overcome objections?
+                </div>
+                
+                <p><strong>Common Objection:</strong> "You're more expensive than other options we're considering."</p>
+                
+                <div class="objection-comparison">
+                    <div class="objection-card surface-response">
+                        <h4>❌ Surface Response (Carrot Top)</h4>
+                        <p><strong>Sales Rep Says:</strong> "Well, you get what you pay for. We deliver high-quality work and our clients are very satisfied."</p>
+                        <br>
+                        <p><strong>Why It Fails:</strong> Generic response that doesn't address the customer's specific situation. Sounds like every other vendor.</p>
+                    </div>
+                    
+                    <div class="objection-card deep-response">
+                        <h4>✅ Deep Response (Whole Carrot)</h4>
+                        <p><strong>Sales Rep Says:</strong> "I understand price is a concern. Earlier you mentioned your sales team struggles to explain your value, and customers choose cheaper alternatives. That's exactly why we focus on human insight in our branding, events, and technical solutions - we help you articulate what makes you worth more, so you can stop competing on price. The cost of losing deals to cheaper competitors is much higher than our fee."</p>
+                        <br>
+                        <p><strong>Why It Works:</strong> Ties price objection directly to their revenue problem, positioning Ladybug as the solution to their deeper concern.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Ladybug's Core Value Proposition</h2>
+                <div class="section-subtitle">What customers understand that prospects don't</div>
+            </div>
+            <div class="section-content">
+                <div class="plain-language">
+                    <strong>Plain Language:</strong> If a customer understands this... they will want to work with us.
+                </div>
+                
+                <div class="key-phrases">
+                    <h4>What Paying Customers Appreciate:</h4>
+                    <div class="phrase-list">
+                        <div class="phrase-item">
+                            <strong>Human Consideration:</strong> We add thoughtful details that consider the end user's actual experience in branding, events, and technical implementations
+                        </div>
+                        <div class="phrase-item">
+                            <strong>Strategic Creativity:</strong> We develop original solutions for complex problems across branding, events, and technical challenges
+                        </div>
+                        <div class="phrase-item">
+                            <strong>Values Integration:</strong> Our work reflects deeper organizational values, whether in brand identity, event experiences, or technology solutions
+                        </div>
+                        <div class="phrase-item">
+                            <strong>Execution Excellence:</strong> We turn complex ideas into reality with professionalism and substance across all service areas
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-phrases">
+                    <h4>Key Benefit Statements to Reinforce:</h4>
+                    <div class="plain-language">
+                        <strong>Plain Language:</strong> If they say this or things like this, it's likely that we align.
+                    </div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">
+                            "We evaluate complex problems and create thoughtful solutions across branding, events, and technology"
+                        </div>
+                        <div class="phrase-item">
+                            "Our human insight helps your brand, events, and technical solutions resonate with real users"
+                        </div>
+                        <div class="phrase-item">
+                            "We bring empathy to every project - from brand identity to complex technical implementations"
+                        </div>
+                        <div class="phrase-item">
+                            "You can have cheap, fast, or well-done - we deliver well-done across all our service areas"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Continuous Learning System</h2>
+                <div class="section-subtitle">Worksheet that follows each sales presentation</div>
+            </div>
+            <div class="section-content">
+                <div class="plain-language">
+                    <strong>Goal:</strong> Every salesperson should be having essentially the same conversation, using insights from successful deals to refine the process and ensure our solutions align with customer needs.
+                </div>
+                
+                <p>After each presentation, complete this worksheet to strengthen future conversations:</p>
+                
+                <div class="template-box">
+                    <h4>Post-Meeting Capture Worksheet:</h4>
+                    <ul>
+                        <li><strong>Surface Need:</strong> What did they initially say they wanted? <br><em>_________________________________</em></li>
+                        <li><strong>Deeper Problem:</strong> What core business issue did you uncover? <br><em>_________________________________</em></li>
+                        <li><strong>Human Impact:</strong> How does this affect their team/customers? <br><em>_________________________________</em></li>
+                        <li><strong>Value Connection:</strong> Which Ladybug benefit resonated most? <br><em>_________________________________</em></li>
+                        <li><strong>Objections Raised:</strong> What concerns did they express? <br><em>_________________________________</em></li>
+                        <li><strong>Response Effectiveness:</strong> How well did your answers land? <br><em>_________________________________</em></li>
+                    </ul>
+                    
+                    <div class="worksheet-instructions">
+                        <p style="color: var(--text-secondary); font-style: italic; font-size: 0.95rem;">
+                            <strong>Instructions:</strong> Complete this worksheet immediately after each presentation. Share insights with the team during weekly sales meetings to improve our collective understanding of customer needs and refine our approach.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p><strong>Ladybug Ventures Sales Guide</strong><br>
+            Created by Jeff Wickert | <a href="mailto:wickert@gmail.com" style="color: var(--ladybug-red); text-decoration: none;">wickert@gmail.com</a><br>
+            Version 1.0 | Template for Internal Use</p>
+        </footer>
+    </div>
+</body>
+</html>
